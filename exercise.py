@@ -60,7 +60,13 @@ class Profiler:
         >>> p.longest_run('TATC')
         5
         """
-        return -1
+        max_run = 0 #initialize the variable in 0
+        run = 1
+        while subseq * run in self.seq:
+            #while the subseq is in the sequence the loop continues
+            max_run = run #if we found a match this run is equal to the max
+            run += 1 
+        return max_run
 
     def match_suspect(self,
                       suspect_name: str,
@@ -73,4 +79,11 @@ class Profiler:
         >>> p.match_suspect('Abel', {'AGAT':3, 'AATG':7, 'TATC':4})
         False
         """
-        pass
+        for subseq, expected_count in dna_fpr.items():
+        #we access to each subseq and the expected count of the FPR
+        count = self.longest_run(subseq) #calculation of the actual count of the subseq in the data
+        if count != expected_count: #if the actual count does not match any of the expected count return false
+            return False
+        return True # if all the counts match the expected count return True, the suspect match the pattern
+
+        
