@@ -81,9 +81,9 @@ class Profiler:
         """
         for subseq, expected_count in dna_fpr.items():
         #we access to each subseq and the expected count of the FPR
-        count = self.longest_run(subseq) #calculation of the actual count of the subseq in the data
-        if count != expected_count: #if the actual count does not match any of the expected count return false
-            return False
+            count = self.longest_run(subseq) #calculation of the actual count of the subseq in the data
+            if count != expected_count: #if the actual count does not match any of the expected count return false
+                return False
         return True # if all the counts match the expected count return True, the suspect match the pattern
 
         
